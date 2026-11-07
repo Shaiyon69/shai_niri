@@ -1,6 +1,6 @@
 # shai_niri
 
-My [niri](https://github.com/YaLTeR/niri) desktop with the [Noctalia](https://noctalia.dev) shell, plus Alacritty and fish configs.
+My [niri](https://github.com/YaLTeR/niri) desktop with the [Noctalia](https://noctalia.dev) shell, plus Alacritty, fish and fastfetch configs.
 
 Works on CachyOS and Arch.
 
@@ -30,7 +30,7 @@ It's safe to run again, which is also how you update.
 
 ## Good to know
 
-- **Replaced files:** your niri, Noctalia, Alacritty and `config.fish` configs are replaced, and Noctalia's `settings.toml` too.
+- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too.
 - **Monitor settings:** an existing `~/.config/niri/cfg/display.kdl` is kept. Otherwise edit that file for your monitor, using `niri msg outputs`.
 - **Default shell:** this isn't changed. To use fish, run `chsh -s /usr/bin/fish`.
 - **Login screen:** other login managers are left alone. To undo the theme, run `sudo rm /etc/sddm.conf.d/zz-shai_niri.conf`.

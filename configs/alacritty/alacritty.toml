@@ -14,51 +14,56 @@ opacity = 0.55
 title = "Alacritty@CachyOS"
 class = { instance = "Alacritty", general = "Alacritty" }
 decorations_theme_variant = "Dark"
+padding = { x = 14, y = 10 }
 
 [scrolling]
 history = 10000
 multiplier = 3
 
 [font]
-normal = { family = "monospace", style = "Regular" }
-bold = { family = "monospace", style = "Bold" }
-italic = { family = "monospace", style = "Italic" }
-bold_italic = { family = "monospace", style = "Bold Italic" }
+normal = { family = "MesloLGS Nerd Font", style = "Regular" }
+bold = { family = "MesloLGS Nerd Font", style = "Bold" }
+italic = { family = "MesloLGS Nerd Font", style = "Italic" }
+bold_italic = { family = "MesloLGS Nerd Font", style = "Bold Italic" }
 size = 12.0
 
 [colors]
-draw_bold_text_with_bright_colors = true
+draw_bold_text_with_bright_colors = false
 
 [colors.primary]
-background = "0x2E3440"
-foreground = "0xD8DEE9"
+background = "0x0B0C0E"
+foreground = "0xD4D4D8"
 
 [colors.normal]
-black = "0x3B4252"
-red = "0xBF616A"
-green = "0xA3BE8C"
-yellow = "0xEBCB8B"
-blue = "0x81A1C1"
-magenta = "0xB48EAD"
-cyan = "0x88C0D0"
-white = "0xE5E9F0"
+black = "0x1C1D21"
+red = "0xC4746E"
+green = "0x8A9A7B"
+yellow = "0xC4B28A"
+blue = "0x8BA4B0"
+magenta = "0xA292A3"
+cyan = "0x8EA4A2"
+white = "0xC5C9C5"
 
 [colors.bright]
-black = "0x4C566A"
-red = "0xBF616A"
-green = "0xA3BE8C"
-yellow = "0xEBCB8B"
-blue = "0x81A1C1"
-magenta = "0xB48EAD"
-cyan = "0x8FBCBB"
-white = "0xECEFF4"
+black = "0x6C6F76"
+red = "0xD9928C"
+green = "0xA3B392"
+yellow = "0xD6C79E"
+blue = "0xA6BCC7"
+magenta = "0xB8A9B9"
+cyan = "0xA9BDBB"
+white = "0xF0F0F0"
+
+[colors.selection]
+background = "0x3A3B41"
+text = "CellForeground"
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 save_to_clipboard = true
 
 [cursor]
-style = { shape = "Underline", blinking = "Off" }
+style = { shape = "Beam", blinking = "Off" }
 unfocused_hollow = true
 thickness = 0.15
 

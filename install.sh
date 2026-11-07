@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# shai_niri installer: niri + Noctalia desktop, Alacritty and fish configs.
+# shai_niri installer: niri + Noctalia desktop, Alacritty, fish and fastfetch configs.
 #
 #   curl -fsSL https://raw.githubusercontent.com/Shaiyon69/shai_niri/main/install.sh | bash
 #

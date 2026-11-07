@@ -12,6 +12,7 @@ adw-gtk-theme
 capitaine-cursors
 noto-fonts
 noto-fonts-emoji
+ttf-meslo-nerd
 
 # Apps the keybinds open
 alacritty
@@ -20,3 +21,4 @@ nautilus
 
 # Shell
 fish
+fastfetch
