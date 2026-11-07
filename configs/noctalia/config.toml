@@ -1,0 +1,15 @@
+[shell]
+polkit_agent = true
+
+[bar.default]
+background_opacity = 0.75
+center = ["date", "clock"]
+end = ["tray", "notifications", "network", "bluetooth", "volume", "control-center", "session"]
+padding = 18
+widget_spacing = 12
+
+[widget.network]
+show_label = false
+
+[widget.control-center]
+glyph = "home"

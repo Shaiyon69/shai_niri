@@ -1,0 +1,11 @@
+config_version = 16
+
+[theme]
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+[wallpaper.default]
+path = "__WALLPAPER__"
+
+[wallpaper.last]
+path = "__WALLPAPER__"

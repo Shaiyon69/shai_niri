@@ -1,0 +1,11 @@
+// ────────────── Output Configuration ──────────────
+// You can run `niri msg outputs` to get the correct name for your displays.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+//
+// This block only matches one specific monitor, so it does nothing on others.
+// The installer never replaces this file if you already have one.
+
+output "HKC OVERSEAS LIMITED 24E4 0000000000001" {
+    mode "1920x1080@165.001"
+    scale 1
+}

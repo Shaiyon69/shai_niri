@@ -1,0 +1,22 @@
+# Desktop
+niri
+noctalia
+xwayland-satellite
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+gnome-keyring
+wl-clipboard
+
+# Look and feel
+adw-gtk-theme
+capitaine-cursors
+noto-fonts
+noto-fonts-emoji
+
+# Apps the keybinds open
+alacritty
+firefox
+nautilus
+
+# Shell
+fish
