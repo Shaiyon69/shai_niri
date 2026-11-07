@@ -3,9 +3,9 @@
     "logo": {
         "type": "file-raw",
         "source": "~/.config/fastfetch/logo.ansi",
-        "width": 30,
-        "height": 11,
-        "padding": { "top": 1, "left": 2, "right": 4 }
+        "width": 32,
+        "height": 12,
+        "padding": { "top": 0, "left": 2, "right": 4 }
     },
     "display": {
         "separator": "  ",
@@ -16,6 +16,7 @@
     "modules": [
         "break",
         { "type": "title", "format": "{user-name}@{host-name}" },
+        { "type": "separator", "string": "\u2500" },
         { "type": "os", "key": "  os", "format": "{name}" },
         { "type": "kernel", "key": "  kernel", "format": "{release}" },
         { "type": "wm", "key": "  wm", "format": "{pretty-name}" },
