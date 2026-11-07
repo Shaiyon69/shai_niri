@@ -132,6 +132,7 @@ stage_files() {
     mkdir -p "$STAGE_DIR/config" "$STAGE_DIR/state/noctalia" "$STAGE_DIR/data/shai_niri"
 
     cp -r "$SOURCE_DIR/configs/." "$STAGE_DIR/config/"
+    cp -r "$SOURCE_DIR/data/." "$STAGE_DIR/data/"
     cp "$SOURCE_DIR/assets/wallpaper.jpg" "$STAGE_DIR/data/shai_niri/wallpaper.jpg"
 
     local wallpaper="$DATA_DIR/shai_niri/wallpaper.jpg" escaped

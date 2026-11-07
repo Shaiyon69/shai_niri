@@ -6,6 +6,7 @@ xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
 gnome-keyring
 wl-clipboard
+libnotify
 
 # Look and feel
 adw-gtk-theme

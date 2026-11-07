@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tailscale
+Comment=Turn Tailscale on or off, keeping this PC's own DNS
+Exec=sh -c "if tailscale status >/dev/null 2>&1; then tailscale down && notify-send Tailscale Off; else tailscale set --accept-dns=false && timeout 20 tailscale up && notify-send Tailscale 'On, DNS stays local' || notify-send -u critical Tailscale 'Could not start. Run tailscale up in a terminal'; fi"
+Icon=network-vpn
+TryExec=tailscale
+Terminal=false
+Type=Application
+Categories=Network;

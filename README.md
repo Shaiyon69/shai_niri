@@ -34,6 +34,7 @@ It's safe to run again, which is also how you update.
 - **Monitor settings:** an existing `~/.config/niri/cfg/display.kdl` is kept. Otherwise edit that file for your monitor, using `niri msg outputs`.
 - **Default shell:** this isn't changed. To use fish, run `chsh -s /usr/bin/fish`.
 - **Login screen:** other login managers are left alone. To undo the theme, run `sudo rm /etc/sddm.conf.d/zz-shai_niri.conf`.
+- **Tailscale:** the launcher gets a Tailscale on/off entry that keeps your own DNS, so tailnet names won't resolve. It's hidden unless Tailscale is installed. First run `sudo tailscale up --operator=$USER`.
 - **Laptops:** the bar has no battery or brightness widgets. Add `"battery"` and `"brightness"` to `end` in `~/.config/noctalia/config.toml`.
 
 ## Options
