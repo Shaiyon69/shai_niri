@@ -2,7 +2,8 @@
 polkit_agent = true
 
 [bar.default]
-background_opacity = 0.75
+background_opacity = 0.35
+compositor_blur = true
 center = ["date", "clock"]
 end = ["tray", "notifications", "network", "bluetooth", "volume", "control-center", "session"]
 padding = 18
