@@ -1,0 +1,10 @@
+[SddmGreeterTheme]
+Name=shai_niri
+Description=Login screen for the shai_niri desktop
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=shai_niri
+Theme-API=2.0
+QtVersion=6

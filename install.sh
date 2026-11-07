@@ -22,6 +22,12 @@ DRY_RUN=0
 ASSUME_YES=0
 INSTALL_PACKAGES=1
 RELOAD=1
+LOGIN_THEME=1
+ONLY_LOGIN_THEME=0
+
+# Named to load last in sddm.conf.d, so it beats files such as kde_settings.conf.
+LOGIN_THEME_DIR="/usr/share/sddm/themes/shai_niri"
+LOGIN_THEME_CONF="/etc/sddm.conf.d/zz-shai_niri.conf"
 
 WORK_DIR=""
 SOURCE_DIR=""
@@ -43,6 +49,8 @@ Usage: install.sh [options]
   --yes           Don't ask for confirmation
   --no-packages   Only install config files, skip pacman
   --no-reload     Don't reload the running desktop
+  --no-login-theme      Don't install the SDDM login screen theme
+  --only-login-theme    Only install the SDDM login screen theme
   -h, --help      Show this help
 
 Files that get replaced are backed up first, to
@@ -57,6 +65,8 @@ parse_args() {
             --yes) ASSUME_YES=1 ;;
             --no-packages) INSTALL_PACKAGES=0 ;;
             --no-reload) RELOAD=0 ;;
+            --no-login-theme) LOGIN_THEME=0 ;;
+            --only-login-theme) ONLY_LOGIN_THEME=1 ;;
             -h | --help)
                 usage
                 exit 0
@@ -134,6 +144,56 @@ stage_files() {
     if [ -f "$display" ]; then
         cp "$display" "$STAGE_DIR/config/niri/cfg/display.kdl"
     fi
+}
+
+uses_sddm() {
+    local manager
+    manager="$(readlink -f /etc/systemd/system/display-manager.service 2>/dev/null || true)"
+    [ "$(basename "$manager")" = "sddm.service" ]
+}
+
+# SDDM can't read files in a home folder, so the theme carries its own wallpaper.
+stage_login_theme() {
+    mkdir -p "$WORK_DIR/login-theme"
+    cp "$SOURCE_DIR"/sddm/shai_niri/* "$WORK_DIR/login-theme/"
+    cp "$SOURCE_DIR/assets/wallpaper.jpg" "$WORK_DIR/login-theme/wallpaper.jpg"
+    printf '[Theme]\nCurrent=shai_niri\n' >"$WORK_DIR/login-theme.conf"
+}
+
+login_theme_is_current() {
+    diff -r "$WORK_DIR/login-theme" "$LOGIN_THEME_DIR" >/dev/null 2>&1 &&
+        cmp -s "$WORK_DIR/login-theme.conf" "$LOGIN_THEME_CONF"
+}
+
+show_login_theme_plan() {
+    [ "$LOGIN_THEME" -eq 1 ] || return 0
+    if ! uses_sddm; then
+        info "Login screen: skipped, this system doesn't use SDDM"
+    elif login_theme_is_current; then
+        info "Login screen: already up to date"
+    else
+        info "Login screen: install $LOGIN_THEME_DIR and $LOGIN_THEME_CONF (needs sudo)"
+    fi
+}
+
+# A failure here only warns, because the desktop itself is already installed.
+install_login_theme() {
+    [ "$LOGIN_THEME" -eq 1 ] || return 0
+    uses_sddm || return 0
+    login_theme_is_current && return 0
+
+    info "Installing the login screen (sudo may ask for your password)"
+    if ! sudo install -Dm644 -t "$LOGIN_THEME_DIR" "$WORK_DIR"/login-theme/* ||
+        ! sudo install -Dm644 "$WORK_DIR/login-theme.conf" "$LOGIN_THEME_CONF"; then
+        warn "could not install the login screen; run install.sh --only-login-theme to retry"
+        return 0
+    fi
+
+    # The main config file overrides sddm.conf.d.
+    if grep -Eq '^[[:space:]]*Current=.' /etc/sddm.conf 2>/dev/null; then
+        warn "/etc/sddm.conf sets its own theme, so remove its Current= line to use this one"
+    fi
+    info "Login screen installed; it appears the next time SDDM starts"
 }
 
 find_missing_packages() {
@@ -309,9 +369,25 @@ main() {
     trap cleanup EXIT
 
     locate_source
+    stage_login_theme
+
+    if [ "$ONLY_LOGIN_THEME" -eq 1 ]; then
+        [ "$LOGIN_THEME" -eq 1 ] || die "--no-login-theme and --only-login-theme can't be used together"
+        uses_sddm || die "this system doesn't use SDDM"
+        show_login_theme_plan
+        if [ "$DRY_RUN" -eq 1 ]; then
+            info "Dry run, nothing was changed"
+            return
+        fi
+        login_theme_is_current || confirm
+        install_login_theme
+        return
+    fi
+
     stage_files
     find_missing_packages
     show_plan
+    show_login_theme_plan
 
     if [ "$DRY_RUN" -eq 1 ]; then
         validate_staged
@@ -323,6 +399,7 @@ main() {
     install_packages
     validate_staged
     install_files
+    install_login_theme
     reload_desktop
     finish
 }
