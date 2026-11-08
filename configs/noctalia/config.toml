@@ -4,8 +4,9 @@ polkit_agent = true
 [bar.default]
 background_opacity = 1.0
 compositor_blur = false
+start = ["workspaces"]
 center = ["date", "clock"]
-end = ["tray", "notifications", "network", "bluetooth", "volume", "control-center", "divider", "session"]
+end = ["launcher", "wallpaper", "tray", "notifications", "network", "bluetooth", "volume", "control-center", "divider", "session"]
 padding = 18
 thickness = 30
 widget_spacing = 12
