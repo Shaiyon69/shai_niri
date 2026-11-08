@@ -14,3 +14,10 @@ show_label = false
 
 [widget.control-center]
 glyph = "home"
+
+[theme]
+pure_black_dark = true # OLED: dark-mode backgrounds become #000000
+
+[theme.templates]
+enable_builtin_templates = true
+builtin_ids = ["gtk3", "gtk4", "alacritty"]
