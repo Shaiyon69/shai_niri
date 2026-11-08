@@ -7,7 +7,7 @@ compositor_blur = false
 center = ["date", "clock"]
 end = ["tray", "notifications", "network", "bluetooth", "volume", "control-center", "session"]
 padding = 18
-thickness = 28
+thickness = 30
 widget_spacing = 12
 
 [widget.network]
