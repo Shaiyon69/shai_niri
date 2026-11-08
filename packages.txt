@@ -10,6 +10,7 @@ libnotify
 
 # Look and feel
 adw-gtk-theme
+qt6ct
 capitaine-cursors
 noto-fonts
 noto-fonts-emoji

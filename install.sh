@@ -140,6 +140,11 @@ stage_files() {
     sed "s|__WALLPAPER__|$escaped|g" "$SOURCE_DIR/templates/noctalia-settings.toml" \
         >"$STAGE_DIR/state/noctalia/settings.toml"
 
+    # qt6ct needs an absolute path to the palette Noctalia writes.
+    mkdir -p "$STAGE_DIR/config/qt6ct"
+    sed "s|__QT_COLORS__|$CONFIG_DIR/qt6ct/colors/noctalia.conf|" "$SOURCE_DIR/templates/qt6ct.conf" \
+        >"$STAGE_DIR/config/qt6ct/qt6ct.conf"
+
     # Monitor settings belong to the machine, so an existing file always wins.
     local display="$CONFIG_DIR/niri/cfg/display.kdl"
     if [ -f "$display" ]; then
