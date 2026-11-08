@@ -11,7 +11,7 @@ libnotify
 # Look and feel
 adw-gtk-theme
 qt6ct
-capitaine-cursors
+papirus-icon-theme
 noto-fonts
 noto-fonts-emoji
 ttf-meslo-nerd
