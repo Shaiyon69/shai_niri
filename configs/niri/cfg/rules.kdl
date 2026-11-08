@@ -53,5 +53,7 @@
 // Steam games (Proton windows are steam_app_<id>) turn on FreeSync while shown.
 window-rule {
     match app-id=r#"^steam_app_"#
+    // tModLoader / Terraria run natively under dotnet.
+    match app-id="dotnet" title=r#"^Terraria"#
     variable-refresh-rate true
 }
