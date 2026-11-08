@@ -36,3 +36,16 @@
           // blur false
         }
     }
+
+    // Discord video/stream pop-out as a small corner overlay.
+    // Main window title ends in " - Discord"; anything else from Discord is a pop-out.
+    window-rule {
+        match app-id="discord"
+        exclude title=r#" - Discord$"#
+        open-floating true
+        open-focused false
+        default-column-width { fixed 480; }
+        default-window-height { fixed 270; }
+        default-floating-position x=16 y=64 relative-to="top-right"
+        opacity 0.95
+    }
