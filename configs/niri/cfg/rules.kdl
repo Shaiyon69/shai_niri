@@ -3,13 +3,6 @@
         clip-to-geometry true
     }
 
-    window-rule {
-        background-effect {
-          blur true
-          xray false
-        }
-    }
-
     // Floating Noctalia settings window.
     window-rule {
         match app-id="dev.noctalia.Noctalia"
