@@ -21,9 +21,3 @@ pure_black_dark = false
 [theme.templates]
 enable_builtin_templates = true
 builtin_ids = ["gtk3", "gtk4", "alacritty"]
-
-# Fixed day/night times for theme auto (no IP geolocation needed).
-[location]
-custom_schedule = true
-sunrise = "06:30"
-sunset = "18:00"
