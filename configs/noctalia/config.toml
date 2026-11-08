@@ -6,10 +6,12 @@ background_opacity = 1.0
 compositor_blur = false
 start = ["workspaces"]
 center = ["date", "clock"]
-end = ["tray", "gap", "network", "bluetooth", "volume", "gap", "notifications", "wallpaper", "control-center", "launcher", "divider", "session"]
+end = ["tray", "gap", "group:conn", "gap", "group:ctrl", "divider", "session"]
 padding = 18
 thickness = 30
 widget_spacing = 12
+# Pill height as a share of the bar; 0.56 matches the workspace circles.
+capsule_thickness = 0.56
 
 [widget.network]
 show_label = false
@@ -34,6 +36,7 @@ drawer = true
 capsule = true
 capsule_fill = "primary"
 capsule_foreground = "on_primary"
+capsule_padding = 0
 
 # Thin vertical line between the status icons and the power button.
 [widget.divider]
@@ -41,7 +44,16 @@ type = "text"
 text = "│"
 color = "#5a5d63"
 
-# Extra space between icon groups: tray | connections and sound | notifications, wallpaper, controls, search.
+# Extra space between the tray, the icon-group pills and the divider.
 [widget.gap]
 type = "spacer"
 length = 20
+
+# Pills around each icon group.
+[[bar.default.capsule_group]]
+id = "conn"
+members = ["network", "bluetooth", "volume"]
+
+[[bar.default.capsule_group]]
+id = "ctrl"
+members = ["notifications", "wallpaper", "control-center", "launcher"]
