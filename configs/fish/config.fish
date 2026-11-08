@@ -30,3 +30,8 @@ set -g __fish_git_prompt_showuntrackedfiles 1
 set -g __fish_git_prompt_showupstream informative
 set -g __fish_git_prompt_color_branch brblack
 set -g fish_transient_prompt 1
+
+# zoxide: `z <name>` jumps to a frequently used folder.
+if type -q zoxide
+    zoxide init fish | source
+end
