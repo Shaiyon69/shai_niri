@@ -25,3 +25,6 @@ builtin_ids = ["gtk3", "gtk4", "alacritty", "qt"]
 
 [widget.volume]
 show_label = false
+
+[widget.tray]
+drawer = true
