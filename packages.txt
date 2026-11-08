@@ -28,3 +28,4 @@ zoxide
 
 # Gaming
 lact
+mangohud

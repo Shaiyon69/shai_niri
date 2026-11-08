@@ -8,4 +8,6 @@
 output "HKC OVERSEAS LIMITED 24E4 0000000000001" {
     mode "1920x1080@165.001"
     scale 1
+    // FreeSync, only while a window with the variable-refresh-rate rule (games) is on screen.
+    variable-refresh-rate on-demand=true
 }

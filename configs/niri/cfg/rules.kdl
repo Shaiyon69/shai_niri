@@ -49,3 +49,9 @@
         default-floating-position x=16 y=64 relative-to="top-right"
         opacity 0.95
     }
+
+// Steam games (Proton windows are steam_app_<id>) turn on FreeSync while shown.
+window-rule {
+    match app-id=r#"^steam_app_"#
+    variable-refresh-rate true
+}

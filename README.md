@@ -30,9 +30,10 @@ It's safe to run again, which is also how you update.
 
 ## Good to know
 
-- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too.
+- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, MangoHud, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too.
 - **Discord overlay:** `discover_overlay/config.ini` styles [Discover Overlay](https://github.com/trigg/Discover), which isn't installed for you. Replacing that file logs it out of Discord, so authorize it again on next start. `Mod+N` shows or hides names.
 - **Monitor settings:** an existing `~/.config/niri/cfg/display.kdl` is kept. Otherwise edit that file for your monitor, using `niri msg outputs`.
+- **Gaming:** FreeSync turns on only while a Steam game window (`steam_app_*`) is on screen. Add `variable-refresh-rate on-demand=true` to your own `display.kdl` if it was kept. MangoHud loads in every Vulkan game, hidden; `Right Shift + F12` shows it. Restart Steam after install so games pick up `MANGOHUD=1`.
 - **Default shell:** this isn't changed. To use fish, run `chsh -s /usr/bin/fish`.
 - **Login screen:** other login managers are left alone. To undo the theme, run `sudo rm /etc/sddm.conf.d/zz-shai_niri.conf`.
 - **Tailscale:** the launcher gets a Tailscale on/off entry that keeps your own DNS, so tailnet names won't resolve. It's hidden unless Tailscale is installed. First run `sudo tailscale up --operator=$USER`.
