@@ -1,7 +1,0 @@
-@import url("noctalia.css");
-
-/* Noctalia maps success to the blue secondary color; keep "good" states green.
-   Lighter than the red error color so the two differ in brightness too. */
-@define-color success_color #8fd19e;
-@define-color success_bg_color #2f5a3c;
-@define-color success_fg_color #ffffff;

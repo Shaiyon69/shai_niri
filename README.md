@@ -30,7 +30,7 @@ It's safe to run again, which is also how you update.
 
 ## Good to know
 
-- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too. GTK 3 and 4 `gtk.css` are replaced so success states show green.
+- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too.
 - **Discord overlay:** `discover_overlay/config.ini` styles [Discover Overlay](https://github.com/trigg/Discover), which isn't installed for you. Replacing that file logs it out of Discord, so authorize it again on next start. `Mod+N` shows or hides names.
 - **Monitor settings:** an existing `~/.config/niri/cfg/display.kdl` is kept. Otherwise edit that file for your monitor, using `niri msg outputs`.
 - **Default shell:** this isn't changed. To use fish, run `chsh -s /usr/bin/fish`.
