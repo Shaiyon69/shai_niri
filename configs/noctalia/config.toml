@@ -32,13 +32,14 @@ show_label = false
 [widget.tray]
 drawer = true
 capsule = true
-capsule_fill = "secondary"
+capsule_fill = "#d6e2f5"
 capsule_foreground = "#121212"
 capsule_padding = 0
 
+# Pills get darker left to right; power is the most saturated blue so it stands out.
 [widget.session]
 capsule = true
-capsule_fill = "primary"
+capsule_fill = "#3b82f6"
 capsule_foreground = "#121212"
 capsule_padding = 0
 
@@ -57,11 +58,11 @@ length = 20
 [[bar.default.capsule_group]]
 id = "conn"
 members = ["network", "bluetooth", "volume"]
-fill = "secondary"
+fill = "#adc6ff"
 foreground = "#121212"
 
 [[bar.default.capsule_group]]
 id = "ctrl"
 members = ["notifications", "wallpaper", "control-center", "launcher"]
-fill = "secondary"
+fill = "#7fa7e0"
 foreground = "#121212"
