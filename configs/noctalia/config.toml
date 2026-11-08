@@ -31,3 +31,6 @@ drawer = true
 
 [widget.spacer]
 length = 28
+
+[widget.session]
+capsule = true
