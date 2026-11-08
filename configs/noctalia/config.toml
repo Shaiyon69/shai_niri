@@ -31,11 +31,15 @@ show_label = false
 
 [widget.tray]
 drawer = true
+capsule = true
+capsule_fill = "secondary"
+capsule_foreground = "#121212"
+capsule_padding = 0
 
 [widget.session]
 capsule = true
 capsule_fill = "primary"
-capsule_foreground = "on_primary"
+capsule_foreground = "#121212"
 capsule_padding = 0
 
 # Thin vertical line between the status icons and the power button.
@@ -53,7 +57,11 @@ length = 20
 [[bar.default.capsule_group]]
 id = "conn"
 members = ["network", "bluetooth", "volume"]
+fill = "secondary"
+foreground = "#121212"
 
 [[bar.default.capsule_group]]
 id = "ctrl"
 members = ["notifications", "wallpaper", "control-center", "launcher"]
+fill = "secondary"
+foreground = "#121212"
