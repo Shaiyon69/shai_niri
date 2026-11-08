@@ -30,33 +30,9 @@ size = 12.0
 [colors]
 draw_bold_text_with_bright_colors = false
 
-[colors.primary]
-background = "0x000000"
-foreground = "0xD4D4D8"
 
-[colors.normal]
-black = "0x1C1D21"
-red = "0xC4746E"
-green = "0x8A9A7B"
-yellow = "0xC4B28A"
-blue = "0x8BA4B0"
-magenta = "0xA292A3"
-cyan = "0x8EA4A2"
-white = "0xC5C9C5"
 
-[colors.bright]
-black = "0x6C6F76"
-red = "0xD9928C"
-green = "0xA3B392"
-yellow = "0xD6C79E"
-blue = "0xA6BCC7"
-magenta = "0xB8A9B9"
-cyan = "0xA9BDBB"
-white = "0xF0F0F0"
 
-[colors.selection]
-background = "0x3A3B41"
-text = "CellForeground"
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"

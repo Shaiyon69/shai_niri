@@ -1,8 +1,9 @@
 config_version = 16
 
 [theme]
-source = "wallpaper"
-wallpaper_scheme = "m3-content"
+mode = "auto"
+source = "custom"
+custom_palette = "Soft"
 
 [wallpaper.default]
 path = "__WALLPAPER__"

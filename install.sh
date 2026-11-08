@@ -347,7 +347,7 @@ reload_desktop() {
     # niri watches its own config file. Noctalia needs telling.
     if pgrep -x noctalia >/dev/null 2>&1; then
         noctalia msg config-reload >/dev/null 2>&1 || warn "could not reload Noctalia"
-        noctalia msg color-scheme-set wallpaper m3-content >/dev/null 2>&1 || warn "could not set the Noctalia theme"
+        noctalia msg color-scheme-set custom Soft >/dev/null 2>&1 || warn "could not set the Noctalia theme"
         info "Reloaded Noctalia"
     fi
 }
