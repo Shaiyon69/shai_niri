@@ -16,7 +16,7 @@ show_label = false
 glyph = "home"
 
 [theme]
-pure_black_dark = true # OLED: dark-mode backgrounds become #000000
+pure_black_dark = false
 
 [theme.templates]
 enable_builtin_templates = true
