@@ -31,7 +31,7 @@ size = 12.0
 draw_bold_text_with_bright_colors = false
 
 [colors.primary]
-background = "0x0B0C0E"
+background = "0x000000"
 foreground = "0xD4D4D8"
 
 [colors.normal]
