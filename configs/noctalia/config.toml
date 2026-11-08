@@ -6,7 +6,7 @@ background_opacity = 1.0
 compositor_blur = false
 start = ["workspaces"]
 center = ["date", "clock"]
-end = ["launcher", "wallpaper", "gap", "tray", "gap", "network", "bluetooth", "volume", "gap", "notifications", "control-center", "divider", "session"]
+end = ["tray", "gap", "network", "bluetooth", "volume", "gap", "notifications", "wallpaper", "control-center", "launcher", "divider", "session"]
 padding = 18
 thickness = 30
 widget_spacing = 12
@@ -41,7 +41,7 @@ type = "text"
 text = "│"
 color = "#5a5d63"
 
-# Extra space between icon groups: actions | tray | connections and sound | notifications and controls.
+# Extra space between icon groups: tray | connections and sound | notifications, wallpaper, controls, search.
 [widget.gap]
 type = "spacer"
 length = 20
