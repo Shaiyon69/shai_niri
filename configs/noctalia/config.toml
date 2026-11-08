@@ -5,7 +5,7 @@ polkit_agent = true
 background_opacity = 1.0
 compositor_blur = false
 center = ["date", "clock"]
-end = ["tray", "notifications", "network", "bluetooth", "volume", "control-center", "spacer", "session"]
+end = ["tray", "notifications", "network", "bluetooth", "volume", "control-center", "divider", "session"]
 padding = 18
 thickness = 30
 widget_spacing = 12
@@ -29,8 +29,13 @@ show_label = false
 [widget.tray]
 drawer = true
 
-[widget.spacer]
-length = 28
-
 [widget.session]
 capsule = true
+capsule_fill = "primary"
+capsule_foreground = "on_primary"
+
+# Thin vertical line between the status icons and the power button.
+[widget.divider]
+type = "text"
+text = "│"
+color = "#5a5d63"
