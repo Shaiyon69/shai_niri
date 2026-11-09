@@ -29,3 +29,5 @@ zoxide
 # Gaming
 lact
 mangohud
+nodejs
+npm

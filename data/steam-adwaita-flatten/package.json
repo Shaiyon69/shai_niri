@@ -1,0 +1,8 @@
+{
+  "name": "steam-adwaita-flatten",
+  "private": true,
+  "description": "Rewrites the Adwaita-for-Steam theme without CSS nesting, so Steam's UI restyles fast",
+  "dependencies": {
+    "lightningcss": "1.25.1"
+  }
+}

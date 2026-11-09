@@ -346,6 +346,27 @@ install_files() {
     fi
 }
 
+# The Adwaita-for-Steam theme's CSS nesting makes Steam restyle about 5x slower;
+# flatten.js rewrites it into plain selectors. A failure only warns.
+speed_up_steam_theme() {
+    local tool="$DATA_DIR/steam-adwaita-flatten"
+    if [ ! -d "$DATA_DIR/Steam/steamui/adwaita" ]; then
+        info "Steam theme speed-up: skipped, Adwaita for Steam isn't installed"
+        return 0
+    fi
+    if ! command -v npm >/dev/null 2>&1 || ! command -v node >/dev/null 2>&1; then
+        warn "Steam theme speed-up needs nodejs and npm; install them and re-run"
+        return 0
+    fi
+    info "Speeding up the Adwaita Steam theme"
+    if npm install --prefix "$tool" --no-audit --no-fund --silent >/dev/null &&
+        node "$tool/flatten.js"; then
+        info "Restart Steam to use it; re-run after every theme update: node $tool/flatten.js"
+    else
+        warn "could not speed up the Steam theme; run: node $tool/flatten.js"
+    fi
+}
+
 reload_desktop() {
     [ "$RELOAD" -eq 1 ] || return 0
 
@@ -406,6 +427,7 @@ main() {
     validate_staged
     install_files
     install_login_theme
+    speed_up_steam_theme
     reload_desktop
     finish
 }

@@ -1,0 +1,29 @@
+/* ------------------ */
+/* --- Custom CSS --- */
+/* ------------------ */
+
+/* --- EXAMPLE: Override Theme Colors --- */
+/* -- DELETE BOTH LINES TO ENABLE
+:root
+{
+	--adw-accent-bg-rgb: 53, 132, 228;
+	--adw-accent-fg-rgb: 255, 255, 255;
+	--adw-accent-rgb: 120, 174, 237;
+}
+-- DELETE BOTH LINES TO ENABLE */
+
+/* --- Performance: no hover/focus animations --- */
+/* The theme animates a gradient on every button and row on hover, and Steam's CEF repaints each frame. */
+:root
+{
+	--adw-transition: none !important;
+	--adw-transition-duration: 0ms !important;
+}
+
+/* --- Performance: game details sidebar --- */
+/* The theme drives the sidebar padding with a scroll-linked animation, so every scroll frame re-lays out the sidebar. */
+html body.DesktopUI div._2iE-78WxX2Pj4GHbq7YJiA div._2aor4XVOYzN1PBSREk0UbO
+{
+	animation: none !important;
+	padding: 8px 8px 0 8px !important;
+}

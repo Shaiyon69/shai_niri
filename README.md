@@ -25,15 +25,17 @@ Then log out and choose niri on your login screen.
 3. Backs up each file it replaces to `~/.local/state/shai_niri/backups/<timestamp>/`.
 4. Copies the configs into place, and marks Noctalia's first-run wizard as done.
 5. Installs the login screen theme, if your system uses SDDM.
+6. Speeds up the Adwaita for Steam theme, if it's installed.
 
 It's safe to run again, which is also how you update.
 
 ## Good to know
 
-- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, MangoHud, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too.
+- **Replaced files:** your niri, Noctalia, Alacritty, fastfetch, MangoHud, AdwSteamGtk `custom.css`, `config.fish` and `fish_prompt.fish` configs are replaced, and Noctalia's `settings.toml` too.
 - **Discord overlay:** `discover_overlay/config.ini` styles [Discover Overlay](https://github.com/trigg/Discover), which isn't installed for you. Replacing that file logs it out of Discord, so authorize it again on next start. `Mod+N` shows or hides names.
 - **Monitor settings:** an existing `~/.config/niri/cfg/display.kdl` is kept. Otherwise edit that file for your monitor, using `niri msg outputs`.
 - **Gaming:** FreeSync turns on only while a Steam game window (`steam_app_*`) is on screen. Add `variable-refresh-rate on-demand=true` to your own `display.kdl` if it was kept. MangoHud loads in every Vulkan game, hidden; `Right Shift + F12` shows it. Restart Steam after install so games pick up `MANGOHUD=1`.
+- **Steam theme:** if [Adwaita for Steam](https://github.com/tkashkin/Adwaita-for-Steam) is installed (for example with the AUR package `adwsteamgtk`), the installer rewrites it without CSS nesting, which makes Steam's UI about 5x faster to restyle. `AdwSteamGtk/custom.css` also turns off its hover animations. Turn on "Install custom CSS" in AdwSteamGtk so updates keep it. Every theme update undoes the speed-up, so run `node ~/.local/share/steam-adwaita-flatten/flatten.js` again afterwards, then restart Steam. The originals are kept as `.orig` files in `~/.local/share/Steam/steamui/adwaita/`.
 - **Cursor and icons:** the cursor is [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor), which isn't in the Arch repos, so it isn't installed for you. Extract `Bibata-Modern-Ice.tar.xz` from its releases into `~/.local/share/icons/`. Icons are Papirus-Dark; GTK apps need `gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark` and `gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice`.
 - **Default shell:** this isn't changed. To use fish, run `chsh -s /usr/bin/fish`.
 - **Login screen:** other login managers are left alone. To undo the theme, run `sudo rm /etc/sddm.conf.d/zz-shai_niri.conf`.
