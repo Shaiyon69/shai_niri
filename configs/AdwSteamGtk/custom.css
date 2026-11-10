@@ -12,6 +12,25 @@
 }
 -- DELETE BOTH LINES TO ENABLE */
 
+/* --- Accent colors: matches the shai_niri desktop palette --- */
+/* Two main colors (gray surfaces + blue accent) plus a third complementary gold. */
+/* Gold marks Play/Install buttons and friends in game; blue-vs-gold stays clear for red-green colorblindness. */
+:root
+{
+	--adw-accent-bg-light: #3b82f6 !important;
+	--adw-accent-bg-dark: #3b82f6 !important;
+	--adw-accent-fg: #121212 !important;
+	--adw-accent: #adc6ff !important;
+
+	--adw-success-bg-light: #e8c77d !important;
+	--adw-success-bg-dark: #e8c77d !important;
+	--adw-success-fg: #121212 !important;
+	--adw-success: #e8c77d !important;
+
+	--adw-user-online: #adc6ff !important;
+	--adw-user-ingame: #e8c77d !important;
+}
+
 /* --- Performance: no hover/focus animations --- */
 /* The theme animates a gradient on every button and row on hover, and Steam's CEF repaints each frame. */
 :root
