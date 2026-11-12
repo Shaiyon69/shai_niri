@@ -66,3 +66,21 @@ id = "ctrl"
 members = ["notifications", "wallpaper", "control-center", "launcher"]
 fill = "#7fa7e0"
 foreground = "#121212"
+
+# App theming: Noctalia renders these on every theme change.
+# Chimaera and Messapp poll their file and restyle live; Steam reads custom.css at startup.
+[theme.templates.user.chimaera]
+input_path = "templates/chimaera.css"
+output_path = "$XDG_CONFIG_HOME/shaiyon-theme/chimaera.css"
+
+[theme.templates.user.messapp]
+input_path = "templates/messapp.css"
+output_path = "$XDG_CONFIG_HOME/shaiyon-theme/messapp.css"
+
+[theme.templates.user.steam_adwsteamgtk]
+input_path = "templates/steam-custom.css"
+output_path = "$XDG_CONFIG_HOME/AdwSteamGtk/custom.css"
+
+[theme.templates.user.steam_live]
+input_path = "templates/steam-custom.css"
+output_path = "$XDG_DATA_HOME/Steam/steamui/adwaita/custom.css"
