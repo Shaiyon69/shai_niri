@@ -88,3 +88,9 @@ post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/steam-apply
 input_path = "templates/lact-stamp.txt"
 output_path = "$XDG_CACHE_HOME/shaiyon-theme/lact-stamp.txt"
 post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/restart-lact.sh"
+
+# Spotify (Spicetify): restart Spotify to see a theme change.
+[theme.templates.user.spicetify]
+input_path = "templates/spicetify-color.ini"
+output_path = "$XDG_CONFIG_HOME/spicetify/Themes/Noctalia/color.ini"
+post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/spicetify-apply.sh"
