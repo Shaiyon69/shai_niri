@@ -68,7 +68,7 @@ fill = "#7fa7e0"
 foreground = "#121212"
 
 # App theming: Noctalia renders these on every theme change.
-# Chimaera and Messapp poll their file and restyle live; Steam reads custom.css at startup.
+# Chimaera and Messapp poll their file and restyle live; Steam shows a change after a restart.
 [theme.templates.user.chimaera]
 input_path = "templates/chimaera.css"
 output_path = "$XDG_CONFIG_HOME/shaiyon-theme/chimaera.css"
@@ -80,10 +80,8 @@ output_path = "$XDG_CONFIG_HOME/shaiyon-theme/messapp.css"
 [theme.templates.user.steam_adwsteamgtk]
 input_path = "templates/steam-custom.css"
 output_path = "$XDG_CONFIG_HOME/AdwSteamGtk/custom.css"
-
-[theme.templates.user.steam_live]
-input_path = "templates/steam-custom.css"
-output_path = "$XDG_DATA_HOME/Steam/steamui/adwaita/custom.css"
+# AdwSteamGtk installs the new colors into Steam, then the CSS speed-up is re-applied.
+post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/steam-apply.sh"
 
 # LACT (GTK4) reads the GTK colors only at startup: reopen its window after a change.
 [theme.templates.user.lact]
