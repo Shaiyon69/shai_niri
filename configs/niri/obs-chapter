@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+"""Add a chapter marker to the current OBS recording via obs-websocket (stdlib only).
+
+Needs OBS 30.2+, Hybrid MP4 recording, and the WebSocket server enabled
+(OBS > Tools > WebSocket Server Settings). Reads the password from OBS's own config.
+"""
+import base64, hashlib, json, os, socket, struct, subprocess, sys
+
+CONF = os.path.expanduser("~/.config/obs-studio/plugin_config/obs-websocket/config.json")
+
+
+def notify(msg):
+    subprocess.run(["notify-send", "-a", "OBS", "-t", "1500", msg], check=False)
+
+
+def send(sock, obj):
+    data = json.dumps(obj).encode()
+    mask = os.urandom(4)
+    n = len(data)
+    head = bytes([0x81]) + (bytes([0x80 | n]) if n < 126 else bytes([0x80 | 126]) + struct.pack(">H", n))
+    sock.sendall(head + mask + bytes(b ^ mask[i % 4] for i, b in enumerate(data)))
+
+
+def recv_exact(sock, n):
+    buf = b""
+    while len(buf) < n:
+        chunk = sock.recv(n - len(buf))
+        if not chunk:
+            raise ConnectionError("OBS closed the connection")
+        buf += chunk
+    return buf
+
+
+def recv(sock):
+    b1, b2 = recv_exact(sock, 2)
+    n = b2 & 0x7F
+    if n == 126:
+        n = struct.unpack(">H", recv_exact(sock, 2))[0]
+    elif n == 127:
+        n = struct.unpack(">Q", recv_exact(sock, 8))[0]
+    payload = recv_exact(sock, n)
+    if b1 & 0x0F == 8:
+        raise ConnectionError("OBS refused the login (wrong password?)")
+    return json.loads(payload)
+
+
+def main():
+    try:
+        conf = json.load(open(CONF))
+        port = conf.get("server_port", 4455)
+        sock = socket.create_connection(("127.0.0.1", port), timeout=2)
+    except (OSError, ValueError):
+        notify("OBS not running or WebSocket server off")
+        return 1
+    key = base64.b64encode(os.urandom(16)).decode()
+    sock.sendall((f"GET / HTTP/1.1\r\nHost: 127.0.0.1:{port}\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n"
+                  f"Sec-WebSocket-Key: {key}\r\nSec-WebSocket-Version: 13\r\n"
+                  "Sec-WebSocket-Protocol: obswebsocket.json\r\n\r\n").encode())
+    resp = b""
+    while b"\r\n\r\n" not in resp:
+        resp += sock.recv(1024)
+    if b" 101 " not in resp.split(b"\r\n")[0]:
+        notify("OBS WebSocket handshake failed")
+        return 1
+
+    hello = recv(sock)["d"]
+    ident = {"rpcVersion": 1}
+    if "authentication" in hello:
+        a = hello["authentication"]
+        secret = base64.b64encode(hashlib.sha256((conf["server_password"] + a["salt"]).encode()).digest())
+        ident["authentication"] = base64.b64encode(hashlib.sha256(secret + a["challenge"].encode()).digest()).decode()
+    send(sock, {"op": 1, "d": ident})
+    recv(sock)  # Identified
+
+    send(sock, {"op": 6, "d": {"requestType": "CreateRecordChapter", "requestId": "1"}})
+    status = recv(sock)["d"]["requestStatus"]
+    sock.close()
+    if status["result"]:
+        notify("Chapter marker added")
+        return 0
+    notify("Marker failed: " + status.get("comment", "not recording in Hybrid MP4?"))
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

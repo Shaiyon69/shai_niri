@@ -144,6 +144,7 @@ binds {
     Mod+T                               { toggle-window-floating; }
     Mod+F                               { maximize-column; }
     Mod+Shift+F                         { fullscreen-window; }
+    Mod+Alt+M                           hotkey-overlay-title="OBS: add chapter marker" { spawn "~/.config/niri/obs-chapter"; }
     Mod+W                               { toggle-column-tabbed-display; }
     Mod+M                               { maximize-window-to-edges; }
 
