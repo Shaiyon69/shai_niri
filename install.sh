@@ -333,7 +333,12 @@ install_files() {
             install -Dm644 "$target" "$BACKUP_DIR/$rel"
             backed_up=$((backed_up + 1))
         fi
-        install -Dm644 "$STAGE_DIR/$rel" "$target"
+        # Scripts such as niri/hz-cycle keep their executable bit.
+        if [ -x "$STAGE_DIR/$rel" ]; then
+            install -Dm755 "$STAGE_DIR/$rel" "$target"
+        else
+            install -Dm644 "$STAGE_DIR/$rel" "$target"
+        fi
     done < <(staged_files)
 
     mkdir -p "$HOME/Pictures/Screenshots"

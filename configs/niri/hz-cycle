@@ -1,0 +1,16 @@
+#!/bin/sh
+# Mod+Shift+0: step the focused monitor to its next refresh rate (60 Hz and up,
+# current resolution), wrapping back to the lowest. Shows a Noctalia OSD pill.
+out=$(niri msg -j focused-output | jq -r .name)
+next=$(niri msg -j outputs | jq -r --arg o "$out" '
+    .[$o] as $x | $x.modes[$x.current_mode] as $c
+    # Best mode per whole-Hz rate, so 119.88/119.98/120.00 count as one step.
+    | [$x.modes[] | select(.width == $c.width and .height == $c.height and .refresh_rate >= 59500)]
+    | group_by((.refresh_rate / 1000) | round) | map(max_by(.refresh_rate))
+    | (map(.refresh_rate / 1000 | round) | index($c.refresh_rate / 1000 | round)) as $i
+    | .[(($i // -1) + 1) % length]
+    # niri needs all 3 decimals (120000 mHz -> "120.000"); "@120" falls back to 60 Hz.
+    | (.refresh_rate | tostring) as $r
+    | "\(.width)x\(.height)@\($r[:-3]).\($r[-3:])"')
+niri msg output "$out" mode "$next" \
+    && noctalia msg osd-show device-desktop "$(printf %.0f "${next#*@}") Hz"
