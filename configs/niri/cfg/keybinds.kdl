@@ -7,6 +7,7 @@ binds {
     // https://docs.noctalia.dev/getting-started/keybinds/
 
     Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+    Mod+F1                              hotkey-overlay-title="Keybind Cheatsheet" { spawn "noctalia" "msg" "panel-toggle" "kenn/keybind-cheatsheet:cheatsheet"; }
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
@@ -18,6 +19,8 @@ binds {
     Mod+Shift+S                         hotkey-overlay-title="Open Settings: noctalia settings" { spawn-sh "noctalia msg settings-toggle"; }
     Mod+Space                     hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+V                               hotkey-overlay-title="Open Clipboard History: noctalia clipboard" { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Shift+N                         hotkey-overlay-title="Open Notes: noctalia notes" { spawn-sh "noctalia msg panel-toggle noctalia/notes:panel"; }
+    Mod+Ctrl+N                          hotkey-overlay-title="Open Notes scratchpad" { spawn-sh "noctalia msg panel-toggle noctalia/notes:panel scratchpad"; }
     Mod+N                               hotkey-overlay-title="Toggle Discord overlay names" { spawn-sh "sed -i '/^icon_only = /{s/True/X/;s/False/True/;s/X/False/}' ~/.config/discover_overlay/config.ini"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "noctalia msg session lock"; }
     Mod+Shift+Q                         hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "noctalia msg panel-toggle session"; }
@@ -144,6 +147,7 @@ binds {
     Mod+T                               { toggle-window-floating; }
     Mod+F                               { maximize-column; }
     Mod+Shift+F                         { fullscreen-window; }
+    Mod+Shift+0                         hotkey-overlay-title="Cycle refresh rate" { spawn "~/.config/niri/hz-cycle"; }
     Mod+Alt+M                           hotkey-overlay-title="OBS: add chapter marker" { spawn "~/.config/niri/obs-chapter"; }
     Mod+W                               { toggle-column-tabbed-display; }
     Mod+M                               { maximize-window-to-edges; }
