@@ -4,6 +4,8 @@
 
         background-color "transparent" // <- needed for noctalia-shell to set wallpaper
 
+        default-column-width { proportion 0.5; } // New windows take half the screen, so two fit side by side
+
         preset-column-widths {
             proportion 0.33333
             proportion 0.5
