@@ -7,6 +7,7 @@ xdg-desktop-portal-gtk
 gnome-keyring
 wl-clipboard
 libnotify
+jq
 
 # Look and feel
 adw-gtk-theme
