@@ -6,7 +6,7 @@ background_opacity = 1.0
 compositor_blur = false
 start = ["workspaces"]
 center = ["date", "clock"]
-end = ["tray", "gap", "group:conn", "gap", "group:ctrl", "divider", "session"]
+end = ["discord", "tray", "gap", "group:conn", "gap", "group:ctrl", "divider", "session"]
 padding = 18
 thickness = 30
 widget_spacing = 12
@@ -24,7 +24,33 @@ pure_black_dark = false
 
 [theme.templates]
 enable_builtin_templates = true
-builtin_ids = ["gtk3", "gtk4", "alacritty", "qt"]
+builtin_ids = ["gtk3", "gtk4", "alacritty", "qt", "niri", "btop"]
+
+# Plugin widgets. Discord hides itself when idle.
+[widget.gamermode]
+type = "nomadcxx/gamer-mode:gamermode"
+
+[widget.discord]
+type = "raycursive/discord-voice:bar"
+hide_when_disconnected = true
+
+# Lock after 10 minutes idle, screens off a minute later. No suspend.
+[idle.behavior.lock]
+enabled = true
+timeout = 600
+
+[idle.behavior.screen-off]
+enabled = true
+timeout = 660
+
+# Night light on a fixed schedule (no location set).
+[location]
+custom_schedule = true
+sunset = "18:00"
+sunrise = "06:00"
+
+[nightlight]
+enabled = true
 
 [widget.volume]
 show_label = false
@@ -63,7 +89,7 @@ foreground = "#121212"
 
 [[bar.default.capsule_group]]
 id = "ctrl"
-members = ["notifications", "wallpaper", "control-center", "launcher"]
+members = ["gamermode", "notifications", "wallpaper", "control-center", "launcher"]
 fill = "#7fa7e0"
 foreground = "#121212"
 
@@ -94,3 +120,37 @@ post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/restart-lac
 input_path = "templates/spicetify-color.ini"
 output_path = "$XDG_CONFIG_HOME/spicetify/Themes/Noctalia/color.ini"
 post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/spicetify-apply.sh"
+
+# Zen: zen-apply.sh copies userChrome.css into the default Zen profile. Restart Zen to see a change.
+[theme.templates.user.zen]
+input_path = "templates/zen-userChrome.css"
+output_path = "$XDG_CACHE_HOME/shaiyon-theme/zen-userChrome.css"
+post_hook = "sh ${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/templates/zen-apply.sh"
+
+# VSCodium: the local "Noctalia" theme extension. Reload the window to see a change.
+[theme.templates.user.vscodium]
+input_path = "templates/vscodium-theme.json"
+output_path = "~/.vscode-oss/extensions/shaiyon.noctalia-theme-1.0.0/themes/noctalia.json"
+
+# Toasts: small, no app name, at most 3 on screen, newest on top. Layer "top" keeps them under fullscreen games.
+[notification]
+position = "top_right"
+layer = "top"
+scale = 0.8
+width = 280
+max_visible = 3
+newest_on_edge = true
+show_app_name = false
+
+# Discord and Steam: 4 s toasts, never stuck on screen.
+[notification.filter.discord]
+enabled = true
+match = "discord"
+override_duration = 4000
+allow_permanent = false
+
+[notification.filter.steam]
+enabled = true
+match = "steam"
+override_duration = 4000
+allow_permanent = false
