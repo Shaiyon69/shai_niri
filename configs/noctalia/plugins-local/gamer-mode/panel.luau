@@ -505,10 +505,9 @@ local function render()
     end
     children[#children + 1] = maintenanceCard()
 
-    panel.render(ui.column({ padding = 16, gap = 10, flexGrow = 1 }, {
-        header(),
-        ui.scroll({ flexGrow = 1 }, { ui.column({ gap = 10 }, children) }),
-    }))
+    -- No scroll and no flexGrow: the panel is height = "content", so it sizes to the cards.
+    table.insert(children, 1, header())
+    panel.render(ui.column({ padding = 16, gap = 10 }, children))
 end
 
 local function sendCommand(action, extra)

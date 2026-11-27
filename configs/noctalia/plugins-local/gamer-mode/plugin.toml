@@ -96,9 +96,11 @@ entry = "service.luau"
 id = "main"
 entry = "panel.luau"
 width = 520
-height = 720
+# Panel grows to fit its cards; centered along the bar.
+height = "content"
+max_height = 900
 placement = "attached"
-position = "auto"
+position = "center"
 # "on_demand" takes keyboard focus only when you click inside the panel, so opening it
 # from the bar leaves focus where it was. "none" would refuse focus entirely, but the
 # shell requires dismiss_on_outside_click = false alongside it, which would leave the
