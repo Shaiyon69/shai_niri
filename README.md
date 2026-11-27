@@ -40,7 +40,8 @@ It's safe to run again, which is also how you update.
 - **Cursor and icons:** the cursor is [Bibata Modern Ice](https://github.com/ful1e5/Bibata_Cursor), which isn't in the Arch repos, so it isn't installed for you. Extract `Bibata-Modern-Ice.tar.xz` from its releases into `~/.local/share/icons/`. Icons are Papirus-Dark; GTK apps need `gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark` and `gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Ice`.
 - **Default shell:** this isn't changed. To use fish, run `chsh -s /usr/bin/fish`.
 - **Login screen:** other login managers are left alone. To undo the theme, run `sudo rm /etc/sddm.conf.d/zz-shai_niri.conf`.
-- **Tailscale:** the launcher gets a Tailscale on/off entry that keeps your own DNS, so tailnet names won't resolve. It's hidden unless Tailscale is installed. First run `sudo tailscale up --operator=$USER`.
+- **Tailscale:** the Tailscale plugin puts an icon in the bar (dimmed when off) with peers, exit nodes and toggles in its panel. First run `sudo tailscale up --operator=$USER`.
+- **Plugins:** Noctalia installs the plugins listed in `templates/noctalia-settings.toml` on first start. Several need extra packages that the installer doesn't add: `scrcpy`, `slurp`, `hyprpicker`, `tesseract`, `tesseract-data-eng`, `translate-shell`, `yt-dlp`, `bitwarden-cli`, `cups`, `python-wand`, `wf-recorder`, plus AUR `win2xcur`, `proton-pass-cli` and `linux-wallpaperengine-git`. LocalSend Plus builds its helper with `cargo` from its panel. The restyled Gamer Mode and Discord Voice panels live in `noctalia/plugins-local/`.
 - **Laptops:** the bar has no battery or brightness widgets. Add `"battery"` and `"brightness"` to `end` in `~/.config/noctalia/config.toml`.
 
 ## Options

@@ -11,9 +11,10 @@ grid_columns = 1
 position = "left"
 background_opacity = 1.0
 compositor_blur = false
-start = ["workspaces"]
-center = ["date", "clock"]
-end = ["discord", "tray", "gap", "group:conn", "gap", "group:ctrl", "divider", "session"]
+# Date and clock sit under the workspaces so the long status column below has room.
+start = ["workspaces", "gap", "date", "clock"]
+center = []
+end = ["discord", "tray", "gap", "group:conn", "gap", "group:ctrl", "gap", "group:tools", "divider", "session"]
 padding = 14
 # Flush to the left edge, slim.
 thickness = 30
@@ -44,6 +45,29 @@ builtin_ids = ["gtk3", "gtk4", "alacritty", "qt", "niri", "btop"]
 # Plugin widgets. Discord hides itself when idle.
 [widget.gamermode]
 type = "nomadcxx/gamer-mode:gamermode"
+
+# Tailscale: icon only (dimmed when off); peers and toggles are in its panel.
+[widget.tailscale]
+type = "davemhammer/tailscale:status"
+show_counts = false
+
+# Updates: count only, hidden when up to date.
+[widget.shelly]
+type = "joshuaslate/shelly:shelly"
+glyph = "package"
+bar_label = "count_only"
+hide_when_up_to_date = true
+bar_font_size = 10
+color = "#121212"
+
+[widget.localsend]
+type = "0rgl/localsend-plus:widget"
+
+[widget.downloader]
+type = "omerfuyar/media-downloader:widget"
+
+[widget.wengine]
+type = "tadomika_ari/w-engine:w-engine-widget"
 
 [widget.discord]
 type = "raycursive/discord-voice:bar"
@@ -100,7 +124,7 @@ length = 20
 # Pills around each icon group.
 [[bar.default.capsule_group]]
 id = "conn"
-members = ["network", "bluetooth", "volume"]
+members = ["network", "tailscale", "bluetooth", "volume"]
 fill = "#adc6ff"
 foreground = "#121212"
 
@@ -108,6 +132,13 @@ foreground = "#121212"
 id = "ctrl"
 members = ["gamermode", "notifications", "wallpaper", "control-center", "launcher"]
 fill = "#7fa7e0"
+foreground = "#121212"
+
+# Plugin icons: updates, LocalSend, downloads, live wallpaper. Between ctrl and power in shade.
+[[bar.default.capsule_group]]
+id = "tools"
+members = ["shelly", "localsend", "downloader", "wengine"]
+fill = "#5d94ea"
 foreground = "#121212"
 
 # Workspaces: all circles, the active one is not stretched (icon groups above keep their pills).

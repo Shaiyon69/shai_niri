@@ -10,3 +10,27 @@ path = "__WALLPAPER__"
 
 [wallpaper.last]
 path = "__WALLPAPER__"
+
+# Noctalia installs these from its plugin sources on first start.
+[plugins]
+enabled = [
+    "noctalia/wallpaper_depth",
+    "noctalia/notes",
+    "noctalia/bitwarden",
+    "kenn/keybind-cheatsheet",
+    "nomadcxx/gamer-mode",
+    "raycursive/discord-voice",
+    "omerfuyar/plugin-hub",
+    "0rgl/localsend-plus",
+    "demencia89/androidconnect",
+    "alexander/screen-toolkit",
+    "vn1k/cursor",
+    "davemhammer/tailscale",
+    "omerfuyar/media-downloader",
+    "joshuaslate/shelly",
+    "yocraft/qrcode",
+    "tadomika_ari/w-engine",
+    "vn1k/icons",
+    "lucasoe/proton-pass",
+    "andrewdems/printers"
+]
