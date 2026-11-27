@@ -130,6 +130,8 @@ foreground = "#121212"
 
 [[bar.default.capsule_group]]
 id = "ctrl"
+# Folds to one icon; hover to open the rest.
+accordion = true
 members = ["gamermode", "notifications", "wallpaper", "control-center", "launcher"]
 fill = "#7fa7e0"
 foreground = "#121212"
@@ -137,7 +139,9 @@ foreground = "#121212"
 # Plugin icons: updates, LocalSend, downloads, live wallpaper. Between ctrl and power in shade.
 [[bar.default.capsule_group]]
 id = "tools"
-members = ["shelly", "localsend", "downloader", "wengine"]
+# Folds to one icon; hover to open the rest.
+accordion = true
+members = ["localsend", "downloader", "wengine", "shelly"]
 fill = "#5d94ea"
 foreground = "#121212"
 
