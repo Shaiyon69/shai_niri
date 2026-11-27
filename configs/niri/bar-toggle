@@ -8,6 +8,14 @@ before=$(w)
 noctalia msg bar-toggle >/dev/null
 # Snap as soon as niri has applied the new space (max 0.3 s) instead of a fixed wait.
 i=0; while [ "$(w)" = "$before" ] && [ $i -lt 15 ]; do sleep 0.02; i=$((i+1)); done
-niri msg action focus-column-last
-niri msg action focus-column-first
+ws=$(niri msg -j workspaces | jq -r '.[] | select(.is_focused) | .id')
+cols=$(niri msg -j windows | jq --argjson ws "${ws:-0}" '[.[] | select(.workspace_id == $ws and (.is_floating | not)) | .layout.pos_in_scrolling_layout[0]] | unique | length')
+if [ "$cols" = 1 ]; then
+    # One column is always fully visible, so focus moves don't scroll; a maximize round-trip does.
+    niri msg action maximize-column
+    niri msg action maximize-column
+else
+    niri msg action focus-column-last
+    niri msg action focus-column-first
+fi
 [ -n "$id" ] && niri msg action focus-window --id "$id"

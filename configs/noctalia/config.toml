@@ -1,6 +1,11 @@
 [shell]
 polkit_agent = true
 
+# Power menu as one column, so it runs along the vertical bar.
+[shell.session]
+grid = true
+grid_columns = 1
+
 [bar.default]
 # Left edge: on 1920x1080 height is scarcer than width, and niri scrolls sideways.
 position = "left"
@@ -67,6 +72,8 @@ show_label = false
 
 [widget.tray]
 drawer = true
+# Tray drawer as one column, along the vertical bar.
+drawer_columns = 1
 capsule = true
 capsule_fill = "#d6e2f5"
 capsule_foreground = "#121212"
