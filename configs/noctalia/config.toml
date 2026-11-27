@@ -176,3 +176,23 @@ enabled = true
 match = "steam"
 override_duration = 4000
 allow_permanent = false
+
+# Plugin sources. Setting any source replaces the built-in list, so official and community
+# are repeated here. "local" is last, so its restyled Gamer Mode overrides community's.
+[[plugins.source]]
+enabled = true
+kind = "git"
+location = "https://github.com/noctalia-dev/official-plugins"
+name = "official"
+
+[[plugins.source]]
+enabled = true
+kind = "git"
+location = "https://github.com/noctalia-dev/community-plugins"
+name = "community"
+
+[[plugins.source]]
+enabled = true
+kind = "path"
+location = "~/.config/noctalia/plugins-local"
+name = "local"
