@@ -147,6 +147,8 @@ binds {
     Mod+T                               { toggle-window-floating; }
     Mod+F                               { maximize-column; }
     Mod+Shift+F                         { fullscreen-window; }
+    Mod+Z                               hotkey-overlay-title="Toggle Noctalia bar" { spawn "~/.config/niri/bar-toggle"; }
+    Mod+MouseMiddle                     { spawn "~/.config/niri/bar-toggle"; }
     Mod+Shift+0                         hotkey-overlay-title="Cycle refresh rate" { spawn "~/.config/niri/hz-cycle"; }
     Mod+Alt+M                           hotkey-overlay-title="OBS: add chapter marker" { spawn "~/.config/niri/obs-chapter"; }
     Mod+W                               { toggle-column-tabbed-display; }

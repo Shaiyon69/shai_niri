@@ -1,0 +1,13 @@
+#!/bin/sh
+# Toggle the Noctalia bar, then re-snap the scrolling view: niri keeps the old
+# scroll offset when the bar's reserved space changes, leaving a gap on one side
+# and pushing the last window off the other.
+w() { niri msg -j focused-window | jq -r '.layout.tile_size[0] // empty'; }
+id=$(niri msg -j focused-window | jq -r '.id // empty')
+before=$(w)
+noctalia msg bar-toggle >/dev/null
+# Snap as soon as niri has applied the new space (max 0.3 s) instead of a fixed wait.
+i=0; while [ "$(w)" = "$before" ] && [ $i -lt 15 ]; do sleep 0.02; i=$((i+1)); done
+niri msg action focus-column-last
+niri msg action focus-column-first
+[ -n "$id" ] && niri msg action focus-window --id "$id"
