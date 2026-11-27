@@ -2,16 +2,26 @@
 polkit_agent = true
 
 [bar.default]
+# Left edge: on 1920x1080 height is scarcer than width, and niri scrolls sideways.
+position = "left"
 background_opacity = 1.0
 compositor_blur = false
 start = ["workspaces"]
 center = ["date", "clock"]
 end = ["discord", "tray", "gap", "group:conn", "gap", "group:ctrl", "divider", "session"]
-padding = 18
+padding = 14
+# Flush to the left edge, slim.
 thickness = 30
-widget_spacing = 12
-# Pill height as a share of the bar; 0.56 matches the workspace circles.
+widget_spacing = 10
+# Circle size as a share of the bar; 0.56 matches the workspace circles.
 capsule_thickness = 0.56
+
+# Stacked hour and minute on the vertical bar.
+[widget.clock]
+vertical_format = "{:%H\n%M}"
+
+[widget.date]
+vertical_format = "{:%d\n%b}"
 
 [widget.network]
 show_label = false
@@ -69,10 +79,10 @@ capsule_fill = "#3b82f6"
 capsule_foreground = "#121212"
 capsule_padding = 0
 
-# Thin vertical line between the status icons and the power button.
+# Thin line between the status icons and the power button (horizontal on the vertical bar).
 [widget.divider]
 type = "text"
-text = "│"
+text = "─"
 color = "#5a5d63"
 
 # Extra space between the tray, the icon-group pills and the divider.
@@ -92,6 +102,11 @@ id = "ctrl"
 members = ["gamermode", "notifications", "wallpaper", "control-center", "launcher"]
 fill = "#7fa7e0"
 foreground = "#121212"
+
+# Workspaces: all circles, the active one is not stretched (icon groups above keep their pills).
+[widget.workspaces]
+active_pill_size = 1.0
+inactive_pill_size = 1.0
 
 # App theming: Noctalia renders these on every theme change.
 # Chimaera and Messapp poll their file and restyle live; Steam shows a change after a restart.
