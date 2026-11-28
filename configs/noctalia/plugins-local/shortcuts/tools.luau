@@ -1,10 +1,9 @@
 --!nonstrict
--- Tools panel: one card per tool (Gamer Mode, Wi-Fi, LocalSend, Tailscale, Downloads).
+-- Tools panel: one card per tool (Gamer Mode, LocalSend, Tailscale, Downloads).
 
 -- panel = a Noctalia panel id; home = a Home (control center) tab to open instead.
 local TOOLS = {
     { label = "Gamer Mode", note = "Performance, profiles, cleanup", glyph = "device-gamepad-2", panel = "nomadcxx/gamer-mode:main" },
-    { label = "Wi-Fi", note = "Networks and connection", glyph = "wifi-0", home = "network" },
     { label = "LocalSend", note = "Send files to nearby devices", glyph = "send", panel = "0rgl/localsend-plus:panel" },
     { label = "Tailscale", note = "Tailnet, peers, exit nodes", glyph = "network", panel = "davemhammer/tailscale:manager" },
     { label = "Downloads", note = "Video and audio from a link", glyph = "download", panel = "omerfuyar/media-downloader:panel" },
