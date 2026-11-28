@@ -1,20 +1,46 @@
 --!nonstrict
--- Wi-Fi icon: wifi-0 (Noctalia's outline Wi-Fi; plain "wifi" is a filled wedge) when connected,
--- network on ethernet, wifi-off otherwise. Click opens Home > Network.
+-- Wi-Fi icon that follows signal strength. Noctalia's font draws Wi-Fi as a wedge that fills
+-- with the level: wifi-0 (outline) to wifi-3 (full). Ethernet shows network, nothing shows
+-- wifi-off. Click opens Home > Network.
+
+-- Signal % to icon: 0-24 empty, 25-49 a third, 50-74 two thirds, 75+ full.
+local function wifiGlyph(signal)
+    if signal >= 75 then
+        return "wifi-3"
+    elseif signal >= 50 then
+        return "wifi-2"
+    elseif signal >= 25 then
+        return "wifi-1"
+    end
+    return "wifi-0"
+end
+
+local function show(glyph, tip)
+    barWidget.setGlyph(glyph)
+    barWidget.setTooltip(tip)
+end
 
 local function refresh()
     noctalia.runAsync({ "nmcli", "-t", "-f", "TYPE,STATE,CONNECTION", "device" }, function(result)
-        local glyph, tip = "wifi-off", "Not connected"
+        local kind, name
         for line in tostring(result.stdout or ""):gmatch("[^\n]+") do
-            local kind, state, name = line:match("^([^:]*):([^:]*):(.*)$")
-            if state == "connected" and (kind == "wifi" or kind == "ethernet") then
-                glyph = kind == "wifi" and "wifi-0" or "network"
-                tip = name
+            local k, state, n = line:match("^([^:]*):([^:]*):(.*)$")
+            if state == "connected" and (k == "wifi" or k == "ethernet") then
+                kind, name = k, n
                 break
             end
         end
-        barWidget.setGlyph(glyph)
-        barWidget.setTooltip(tip)
+        if kind == "ethernet" then
+            show("network", name)
+        elseif kind ~= "wifi" then
+            show("wifi-off", "Not connected")
+        else
+            -- --rescan no: read the last scan, never trigger a new one every poll.
+            noctalia.runAsync({ "nmcli", "-t", "-f", "IN-USE,SIGNAL", "device", "wifi", "list", "--rescan", "no" }, function(scan)
+                local signal = tonumber(tostring(scan.stdout or ""):match("%*:(%d+)")) or 0
+                show(wifiGlyph(signal), string.format("%s  %d%%", name, signal))
+            end)
+        end
     end)
 end
 
