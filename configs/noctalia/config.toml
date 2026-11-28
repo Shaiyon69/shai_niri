@@ -47,6 +47,11 @@ show_label = false
 [widget.control-center]
 glyph = "home"
 
+# Launcher: app grid instead of the magnifier, which drew larger than its neighbours.
+[widget.launcher]
+type = "launcher"
+glyph = "layout-grid"
+
 # Home (control center) tiles: 6 max. Gamer Mode and Wallpaper replace Caffeine and Power profile
 # (power profile is in the Gamer Mode panel); Tools (LocalSend, Tailscale, Downloads) replaces Wi-Fi (on the bar).
 [[control_center.shortcuts]]
