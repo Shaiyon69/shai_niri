@@ -30,7 +30,7 @@ padding = 14
 thickness = 30
 widget_spacing = 10
 # Circle size as a share of the bar; 0.56 matches the workspace circles.
-capsule_thickness = 0.56
+capsule_thickness = 0.6
 # Fully round pill ends and icon circles.
 capsule_radius = 100
 
