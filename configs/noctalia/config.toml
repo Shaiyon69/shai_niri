@@ -24,7 +24,7 @@ compositor_blur = false
 start = ["workspaces"]
 # Fixed in the middle of the bar, so workspaces and the pills below never push it.
 center = ["date", "clock"]
-end = ["discord", "shelly", "tray", "group:nav", "session"]
+end = ["discord", "tray", "group:nav", "session"]
 padding = 14
 # Flush to the left edge, slim.
 thickness = 30
@@ -91,18 +91,6 @@ enable_builtin_templates = true
 builtin_ids = ["gtk3", "gtk4", "alacritty", "qt", "niri", "btop"]
 
 # Plugin widgets. Discord hides itself when idle.
-# Updates: count only, hidden when up to date. Own capsule, same blue as the old tools pill.
-[widget.shelly]
-type = "joshuaslate/shelly:shelly"
-capsule = true
-capsule_fill = "#5d94ea"
-capsule_foreground = "#121212"
-glyph = "package"
-bar_label = "count_only"
-hide_when_up_to_date = true
-bar_font_size = 10
-color = "#121212"
-
 [widget.discord]
 type = "raycursive/discord-voice:bar"
 hide_when_disconnected = true

@@ -28,7 +28,6 @@ enabled = [
     "vn1k/cursor",
     "davemhammer/tailscale",
     "omerfuyar/media-downloader",
-    "joshuaslate/shelly",
     "yocraft/qrcode",
     "vn1k/icons",
     "lucasoe/proton-pass",
