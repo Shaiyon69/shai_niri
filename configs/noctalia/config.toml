@@ -64,15 +64,15 @@ type = "launcher"
 glyph = "layout-grid"
 
 # Home (control center) tiles: 6 max. Gamer Mode and Wallpaper replace Caffeine and Power profile
-# (power profile is in the Gamer Mode panel); Tools (LocalSend, Tailscale, Downloads) replaces Wi-Fi (on the bar).
+# (power profile is in the Gamer Mode panel). Gamer Mode now opens from the Tools tile (with Wi-Fi, LocalSend, Tailscale, Downloads).
 [[control_center.shortcuts]]
-type = "shaiyon/shortcuts:tools"
+type = "wifi"
 
 [[control_center.shortcuts]]
 type = "bluetooth"
 
 [[control_center.shortcuts]]
-type = "nomadcxx/gamer-mode:toggle"
+type = "shaiyon/shortcuts:tools"
 
 [[control_center.shortcuts]]
 type = "shaiyon/shortcuts:wallpaper"
