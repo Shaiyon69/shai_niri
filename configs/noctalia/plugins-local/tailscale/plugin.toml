@@ -84,7 +84,7 @@ height = 640
 # Local tweak: opens from the bar like the other panels.
 placement = "attached"
 position = "center"
-open_near_click = true
+open_near_click = false  # local: always centered on the bar
 keyboard_focus = "exclusive"
 dismiss_on_outside_click = true
 
