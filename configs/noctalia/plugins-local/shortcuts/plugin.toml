@@ -5,7 +5,7 @@ plugin_api = 43
 author = "shaiyon"
 license = "MIT"
 icon = "photo"
-description = "Wallpaper tile for the control center and a compact wallpaper picker that fits beside a side bar."
+description = "Control center tiles (Wallpaper, Tools) and the small panels they open."
 tags = [ "utility" ]
 dependencies = []
 
@@ -20,6 +20,21 @@ entry = "picker.luau"
 width = 380
 height = "content"
 max_height = 760
+placement = "attached"
+position = "center"
+keyboard_focus = "on_demand"
+
+[[shortcut]]
+id = "tools"
+entry = "tools-tile.luau"
+
+# Small list of tool panels (LocalSend, Tailscale, Downloads), opened from the Tools tile.
+[[panel]]
+id = "toolbox"
+entry = "tools.luau"
+width = 320
+height = "content"
+max_height = 600
 placement = "attached"
 position = "center"
 keyboard_focus = "on_demand"

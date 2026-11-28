@@ -24,7 +24,7 @@ compositor_blur = false
 start = ["workspaces"]
 # Fixed in the middle of the bar, so workspaces and the pills below never push it.
 center = ["date", "clock"]
-end = ["discord", "tray", "gap", "group:tools", "gap", "group:nav", "divider", "session"]
+end = ["discord", "tray", "gap", "shelly", "gap", "group:nav", "divider", "session"]
 padding = 14
 # Flush to the left edge, slim.
 thickness = 30
@@ -46,9 +46,9 @@ show_label = false
 glyph = "home"
 
 # Home (control center) tiles: 6 max. Gamer Mode and Wallpaper replace Caffeine and Power profile
-# (power profile is in the Gamer Mode panel).
+# (power profile is in the Gamer Mode panel); Tools (LocalSend, Tailscale, Downloads) replaces Wi-Fi (on the bar).
 [[control_center.shortcuts]]
-type = "wifi"
+type = "shaiyon/shortcuts:tools"
 
 [[control_center.shortcuts]]
 type = "bluetooth"
@@ -73,25 +73,17 @@ enable_builtin_templates = true
 builtin_ids = ["gtk3", "gtk4", "alacritty", "qt", "niri", "btop"]
 
 # Plugin widgets. Discord hides itself when idle.
-# Tailscale: icon only (dimmed when off); peers and toggles are in its panel.
-[widget.tailscale]
-type = "davemhammer/tailscale:status"
-show_counts = false
-
-# Updates: count only, hidden when up to date.
+# Updates: count only, hidden when up to date. Own capsule, same blue as the old tools pill.
 [widget.shelly]
 type = "joshuaslate/shelly:shelly"
+capsule = true
+capsule_fill = "#5d94ea"
+capsule_foreground = "#121212"
 glyph = "package"
 bar_label = "count_only"
 hide_when_up_to_date = true
 bar_font_size = 10
 color = "#121212"
-
-[widget.localsend]
-type = "0rgl/localsend-plus:widget"
-
-[widget.downloader]
-type = "omerfuyar/media-downloader:widget"
 
 [widget.discord]
 type = "raycursive/discord-voice:bar"
@@ -145,15 +137,7 @@ color = "#5a5d63"
 type = "spacer"
 length = 20
 
-# Pills around each icon group.
-[[bar.default.capsule_group]]
-id = "tools"
-# Folds to one icon; hover to open the rest.
-accordion = true
-members = ["localsend", "tailscale", "downloader", "shelly"]
-fill = "#5d94ea"
-foreground = "#121212"
-
+# Pill around the icon group.
 # Wi-Fi, Bluetooth, volume, home (control center) and search (launcher): always open, next to the power button.
 [[bar.default.capsule_group]]
 id = "nav"
