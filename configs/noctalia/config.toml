@@ -65,12 +65,11 @@ glyph = "layout-grid"
 
 # Home (control center) tiles: 6 max. Gamer Mode and Wallpaper replace Caffeine and Power profile
 # (power profile is in the Gamer Mode panel). Gamer Mode now opens from the Tools tile (with LocalSend, Tailscale, Downloads).
-# Wi-Fi and Bluetooth tiles are my own: they open their pages and never switch the radio off.
 [[control_center.shortcuts]]
-type = "shaiyon/shortcuts:wifi-page"
+type = "wifi"
 
 [[control_center.shortcuts]]
-type = "shaiyon/shortcuts:bluetooth-page"
+type = "bluetooth"
 
 [[control_center.shortcuts]]
 type = "shaiyon/shortcuts:tools"

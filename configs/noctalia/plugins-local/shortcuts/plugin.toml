@@ -52,12 +52,3 @@ entry = "bluetooth.luau"
 [[widget]]
 id = "volume"
 entry = "volume.luau"
-
-# Home tiles that open the Wi-Fi / Bluetooth pages instead of switching the radio off.
-[[shortcut]]
-id = "wifi-page"
-entry = "wifi-tile.luau"
-
-[[shortcut]]
-id = "bluetooth-page"
-entry = "bluetooth-tile.luau"
