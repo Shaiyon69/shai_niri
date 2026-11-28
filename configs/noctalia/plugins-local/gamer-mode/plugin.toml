@@ -107,6 +107,11 @@ position = "center"
 # panel on screen until you click the bar icon again.
 keyboard_focus = "on_demand"
 
+# Local addition: control center tile.
+[[shortcut]]
+id = "toggle"
+entry = "shortcut.luau"
+
 [[widget]]
 id = "gamermode"
 entry = "widget.luau"

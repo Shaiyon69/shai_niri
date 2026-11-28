@@ -21,6 +21,7 @@ enabled = [
     "nomadcxx/gamer-mode",
     "raycursive/discord-voice",
     "omerfuyar/plugin-hub",
+    "shaiyon/shortcuts",
     "0rgl/localsend-plus",
     "demencia89/androidconnect",
     "alexander/screen-toolkit",

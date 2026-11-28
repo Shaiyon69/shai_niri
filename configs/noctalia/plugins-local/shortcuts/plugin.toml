@@ -1,0 +1,14 @@
+id = "shaiyon/shortcuts"
+name = "Shortcuts"
+version = "1.0.0"
+plugin_api = 26
+author = "shaiyon"
+license = "MIT"
+icon = "photo"
+description = "Control center tile that opens the wallpaper picker."
+tags = [ "utility" ]
+dependencies = []
+
+[[shortcut]]
+id = "wallpaper"
+entry = "wallpaper.luau"
