@@ -1,14 +1,25 @@
 id = "shaiyon/shortcuts"
 name = "Shortcuts"
-version = "1.0.0"
-plugin_api = 26
+version = "1.1.0"
+plugin_api = 43
 author = "shaiyon"
 license = "MIT"
 icon = "photo"
-description = "Control center tile that opens the wallpaper picker."
+description = "Wallpaper tile for the control center and a compact wallpaper picker that fits beside a side bar."
 tags = [ "utility" ]
 dependencies = []
 
 [[shortcut]]
 id = "wallpaper"
 entry = "wallpaper.luau"
+
+# Narrow picker: two thumbnail columns, grows to fit, centered on the bar.
+[[panel]]
+id = "picker"
+entry = "picker.luau"
+width = 380
+height = "content"
+max_height = 760
+placement = "attached"
+position = "center"
+keyboard_focus = "on_demand"
