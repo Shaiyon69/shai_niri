@@ -24,7 +24,7 @@ compositor_blur = false
 start = ["workspaces"]
 # Fixed in the middle of the bar, so workspaces and the pills below never push it.
 center = ["date", "clock"]
-end = ["discord", "tray", "gap", "shelly", "gap", "group:nav", "divider", "session"]
+end = ["discord", "tray", "gap", "shelly", "group:nav", "divider", "session"]
 padding = 14
 # Flush to the left edge, slim.
 thickness = 30
