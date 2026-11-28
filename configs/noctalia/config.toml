@@ -44,10 +44,16 @@ vertical_format = "{:%d\n%b}"
 [widget.network]
 show_label = false
 
-# Bluetooth draws smaller than its neighbours; 1.1 matches their size without thicker strokes (1.2 looked bold).
-[widget.bluetooth]
-type = "bluetooth"
-scale = 1.1
+# Wi-Fi, Bluetooth and volume use my own widgets (plugins-local/shortcuts) with Tabler outline icons,
+# the same set as home and the launcher, so all five match in size and stroke.
+[widget.wifi]
+type = "shaiyon/shortcuts:wifi"
+
+[widget.bt]
+type = "shaiyon/shortcuts:bluetooth"
+
+[widget.audio]
+type = "shaiyon/shortcuts:volume"
 
 [widget.control-center]
 glyph = "home"
@@ -155,7 +161,7 @@ length = 20
 # Wi-Fi, Bluetooth, volume, home (control center) and search (launcher): always open, next to the power button.
 [[bar.default.capsule_group]]
 id = "nav"
-members = ["network", "bluetooth", "volume", "control-center", "launcher"]
+members = ["wifi", "bt", "audio", "control-center", "launcher"]
 fill = "#4d8cf0"
 foreground = "#121212"
 
