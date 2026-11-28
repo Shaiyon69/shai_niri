@@ -118,7 +118,7 @@ width  = 400
 height = 560
 # Local tweak: opens from the bar like the other panels.
 placement = "attached"
-position = "auto"
+position = "center"
 
 [[service]]
 id    = "service"

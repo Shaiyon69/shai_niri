@@ -1,6 +1,12 @@
 [shell]
 polkit_agent = true
 
+# Built-in panels open at the middle of the bar, like the plugin panels.
+[shell.panel]
+control_center_position = "center"
+session_position = "center"
+wallpaper_position = "center"
+
 # Power menu as one column, so it runs along the vertical bar.
 [shell.session]
 grid = true
