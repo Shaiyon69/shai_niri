@@ -15,7 +15,7 @@ start = ["workspaces"]
 # Fixed in the middle of the bar, so workspaces and the pills below never push it.
 center = ["date", "clock"]
 # Wi-Fi, Bluetooth, volume and notifications live in the control center (Mod+S), not here.
-end = ["discord", "tray", "gap", "group:ctrl", "gap", "group:tools", "divider", "session"]
+end = ["discord", "tray", "gap", "group:ctrl", "gap", "group:tools", "gap", "group:nav", "divider", "session"]
 padding = 14
 # Flush to the left edge, slim.
 thickness = 30
@@ -127,7 +127,7 @@ length = 20
 id = "ctrl"
 # Folds to one icon; hover to open the rest.
 accordion = true
-members = ["gamermode", "wallpaper", "control-center", "launcher"]
+members = ["gamermode", "wallpaper"]
 fill = "#7fa7e0"
 foreground = "#121212"
 
@@ -138,6 +138,13 @@ id = "tools"
 accordion = true
 members = ["localsend", "tailscale", "downloader", "wengine", "shelly"]
 fill = "#5d94ea"
+foreground = "#121212"
+
+# Home (control center) and search (launcher): always open, next to the power button.
+[[bar.default.capsule_group]]
+id = "nav"
+members = ["control-center", "launcher"]
+fill = "#4d8cf0"
 foreground = "#121212"
 
 # Workspaces: all circles, the active one is not stretched (icon groups above keep their pills).
