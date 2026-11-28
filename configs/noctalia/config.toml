@@ -119,7 +119,8 @@ drawer_columns = 1
 capsule = true
 capsule_fill = "#d6e2f5"
 capsule_foreground = "#121212"
-capsule_padding = 0
+# 0.6 rounds the tray circle to 17x18 px (0 left it a squat 17x16).
+capsule_padding = 0.6
 
 # Pills get darker left to right; power is the most saturated blue so it stands out.
 [widget.session]
