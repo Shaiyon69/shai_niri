@@ -31,6 +31,8 @@ thickness = 30
 widget_spacing = 10
 # Circle size as a share of the bar; 0.56 matches the workspace circles.
 capsule_thickness = 0.56
+# Fully round pill ends and icon circles.
+capsule_radius = 100
 
 # Stacked hour and minute on the vertical bar.
 [widget.clock]
