@@ -67,9 +67,6 @@ type = "0rgl/localsend-plus:widget"
 [widget.downloader]
 type = "omerfuyar/media-downloader:widget"
 
-[widget.wengine]
-type = "tadomika_ari/w-engine:w-engine-widget"
-
 [widget.discord]
 type = "raycursive/discord-voice:bar"
 hide_when_disconnected = true
@@ -131,12 +128,12 @@ members = ["gamermode", "wallpaper"]
 fill = "#7fa7e0"
 foreground = "#121212"
 
-# Plugin icons: updates, LocalSend, downloads, live wallpaper. Between ctrl and power in shade.
+# Plugin icons: LocalSend, Tailscale, downloads, updates. Between ctrl and power in shade.
 [[bar.default.capsule_group]]
 id = "tools"
 # Folds to one icon; hover to open the rest.
 accordion = true
-members = ["localsend", "tailscale", "downloader", "wengine", "shelly"]
+members = ["localsend", "tailscale", "downloader", "shelly"]
 fill = "#5d94ea"
 foreground = "#121212"
 

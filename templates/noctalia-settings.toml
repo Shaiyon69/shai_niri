@@ -29,7 +29,6 @@ enabled = [
     "omerfuyar/media-downloader",
     "joshuaslate/shelly",
     "yocraft/qrcode",
-    "tadomika_ari/w-engine",
     "vn1k/icons",
     "lucasoe/proton-pass",
     "andrewdems/printers"
