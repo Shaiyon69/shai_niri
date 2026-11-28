@@ -41,14 +41,13 @@ vertical_format = "{:%H\n%M}"
 [widget.date]
 vertical_format = "{:%d\n%b}"
 
-# Wi-Fi and Bluetooth glyphs draw smaller than home/grid; scale them to match (~13 px).
 [widget.network]
 show_label = false
-scale = 1.1
 
+# Bluetooth draws smaller than its neighbours; 1.1 matches their size without thicker strokes (1.2 looked bold).
 [widget.bluetooth]
 type = "bluetooth"
-scale = 1.2
+scale = 1.1
 
 [widget.control-center]
 glyph = "home"
