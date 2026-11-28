@@ -1,5 +1,6 @@
 --!nonstrict
 -- Volume icon by level. Click opens Home > Audio, scroll changes volume, right-click mutes.
+-- No hover label: Noctalia anchors plugin labels to the middle of the pill, not the icon.
 
 local SINK = "@DEFAULT_AUDIO_SINK@"
 
@@ -17,7 +18,6 @@ local function refresh()
             glyph = "volume-2"
         end
         barWidget.setGlyph(glyph)
-        barWidget.setTooltip(muted and "Muted" or string.format("Volume %d%%", math.floor(level * 100 + 0.5)))
     end)
 end
 

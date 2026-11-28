@@ -1,17 +1,16 @@
 --!nonstrict
 -- Bluetooth icon: off, on, or connected. Click opens Home > Bluetooth.
+-- No hover label: Noctalia anchors plugin labels to the middle of the pill, not the icon.
 
 local function refresh()
     noctalia.runAsync({ "sh", "-c", "bluetoothctl show | grep -q 'Powered: yes' && { bluetoothctl devices Connected | head -n1; echo on; } || echo off" }, function(result)
         local out = tostring(result.stdout or "")
-        local glyph, tip = "bluetooth-off", "Bluetooth off"
+        local glyph = "bluetooth-off"
         if out:find("on%s*$") then
             local device = out:match("^Device %S+ ([^\n]+)")
             glyph = device and "bluetooth-connected" or "bluetooth"
-            tip = device or "Bluetooth on"
         end
         barWidget.setGlyph(glyph)
-        barWidget.setTooltip(tip)
     end)
 end
 
