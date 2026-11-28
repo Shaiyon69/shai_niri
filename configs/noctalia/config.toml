@@ -24,7 +24,7 @@ compositor_blur = false
 start = ["workspaces"]
 # Fixed in the middle of the bar, so workspaces and the pills below never push it.
 center = ["date", "clock"]
-end = ["discord", "tray", "group:nav", "shelly", "divider", "session"]
+end = ["discord", "shelly", "tray", "group:nav", "session"]
 padding = 14
 # Flush to the left edge, slim.
 thickness = 30
@@ -119,15 +119,16 @@ drawer_columns = 1
 capsule = true
 capsule_fill = "#d6e2f5"
 capsule_foreground = "#121212"
-# 0.6 rounds the tray circle to 17x18 px (0 left it a squat 17x16).
-capsule_padding = 0.6
+# 1 rounds the tray circle to 17x18 px (0 left it a squat 17x16; whole numbers only).
+capsule_padding = 1
 
 # Pills get darker left to right; power is the most saturated blue so it stands out.
 [widget.session]
 capsule = true
 capsule_fill = "#3b82f6"
 capsule_foreground = "#121212"
-capsule_padding = 0
+# Same as the tray: 1 makes the circle 17x18 instead of a squat 17x16.
+capsule_padding = 1
 
 # Thin line between the status icons and the power button (horizontal on the vertical bar).
 [widget.divider]
